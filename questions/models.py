@@ -31,3 +31,13 @@ class Question(models.Model):
 class Image(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE,  related_name="question_images")
     image = models.ImageField(upload_to='question_images/')
+
+class Mark(models.Model):
+    size_in_mm = models.DecimalField(max_digits=5, decimal_places=2)
+    description = models.TextField()
+    color = models.TextField()
+    texture = models.TextField()
+    has_grown = models.BooleanField()
+    position_on_body_x = models.DecimalField(max_digits=10, decimal_places=2)
+    position_on_body_y = models.DecimalField(max_digits=10, decimal_places=2)
+    
