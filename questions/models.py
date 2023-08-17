@@ -33,6 +33,7 @@ class Image(models.Model):
     image = models.ImageField(upload_to='question_images/')
 
 class Mark(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     size_in_mm = models.DecimalField(max_digits=5, decimal_places=2)
     description = models.TextField()
     color = models.TextField()
