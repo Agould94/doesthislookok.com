@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Questions from '../features/User/Questions'
 
 function Home() {
   return (
@@ -8,6 +9,7 @@ function Home() {
        <Link to = "/intake">
         <button>Check if it looks ok</button>
         </Link>
+        <Questions></Questions>
     </div>
   
   )
