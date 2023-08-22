@@ -3,6 +3,7 @@ import axios from 'axios'
 
 function Questions() {
     const [questions, setQuestions] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(()=>{
         axios.get('http://localhost:8000/questions/')
@@ -11,17 +12,18 @@ function Questions() {
                 const data = JSON.parse(response.data)
                 console.log(data[0].fields.title)
                 setQuestions(data);
+                setLoading(false)
             })
             .catch(error =>{
                 console.error(error);
             })
     },[])
-    
+
   return (
     <div>
         <h1>Your Questions:</h1>
         <div>
-            {questions[0].fields.title}
+            {loading ? <div>loading </div> : <div>{questions[0].fields.title}</div>}
         </div>
     </div>
   )
