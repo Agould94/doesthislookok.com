@@ -30,16 +30,18 @@ function Signup(){
     }
 
     return (
-        <div>
-            <p>name</p>
+    <div className='page-center'>
+        <div className = "loginbox">
+            <p className='labeltext'>name</p>
             <input type="text" name="username" onChange={handleInputChange} />
-            <p>email</p>
+            <p className='labeltext'>email</p>
             <input type="email" name="email" onChange={handleInputChange} />
-            <p>password</p>
+            <p className='labeltext'>password</p>
             <input type="password" name="password" onChange={handleInputChange} />
 
-            <button onClick={handleSignup}>Sign Up</button>
+            <button className='loginbutton site-button' onClick={handleSignup}>Sign Up</button>
         </div>
+    </div>
     );
 
 }

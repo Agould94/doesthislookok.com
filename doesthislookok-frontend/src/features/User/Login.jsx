@@ -31,10 +31,14 @@ function Login() {
   }
 
   return (
-    <div>
-      <input type="text" name="username" onChange={handleInputChange} />
-      <input type="password" name="password" onChange={handleInputChange} />
-      <button onClick={handleLogin}>Log In</button>
+    <div className='page-center'>
+      <div className = "loginbox">
+        <p className='labeltext'>Username:</p>
+        <input type="text" name="username" onChange={handleInputChange} />
+        <p className='labeltext'>Password:</p>
+        <input type="password" name="password" onChange={handleInputChange} />
+        <button className='loginbutton site-button' onClick={handleLogin}>Log In</button>
+      </div>
     </div>
   )
 }

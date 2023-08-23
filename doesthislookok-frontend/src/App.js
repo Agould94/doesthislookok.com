@@ -19,12 +19,16 @@ import Intake from './features/Intake/Intake';
 import Signup from './features/User/Signup';
 import Login from './features/User/Login';
 
+//navbar
+import NavBar from './Components/NavBar';
+
 
 function App() {
   const dispatch = useDispatch()
 
   return (
     <div className="App">
+      <NavBar></NavBar>
       <Routes>
         <Route exact path = "/" element = {<Home></Home>}>
         </Route>
