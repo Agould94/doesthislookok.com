@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 
 import {login} from './userSlice'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+
 
 import axios from 'axios';
 
@@ -15,6 +16,8 @@ function Login() {
     password: ''
   });
 
+  const [loggedIn, setLoggedIn] = useState(false)
+
   const handleInputChange = (event) =>{
     const {name, value} = event.target
     setFormData((prevData)=>({...prevData, [name]: value}))
@@ -24,7 +27,10 @@ function Login() {
     try{
       const response = await axios.post('http://localhost:8000/api/login/', formData)
       const user = response.data.user;
+      setLoggedIn(true)
+      console.log(user)
       dispatch(login(user))
+
     } catch(error){
       console.log("error")
     }
@@ -32,6 +38,7 @@ function Login() {
 
   return (
     <div className='page-center'>
+      {loggedIn ? <div>Welcome</div> :
       <div className = "loginbox">
         <p className='labeltext'>Username:</p>
         <input type="text" name="username" onChange={handleInputChange} />
@@ -39,6 +46,7 @@ function Login() {
         <input type="password" name="password" onChange={handleInputChange} />
         <button className='loginbutton site-button' onClick={handleLogin}>Log In</button>
       </div>
+      }
     </div>
   )
 }
