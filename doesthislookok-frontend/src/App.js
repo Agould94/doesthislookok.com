@@ -16,6 +16,10 @@ import Home from './Components/Home';
 //intake
 import Intake from './features/Intake/Intake';
 
+import Signup from './features/User/Signup';
+import Login from './features/User/Login';
+
+
 function App() {
   const dispatch = useDispatch()
 
@@ -26,6 +30,8 @@ function App() {
         </Route>
         <Route path = "/intake" element = {<Intake/>}>
         </Route>
+        <Route path = "/signup" element = {<Signup/>}/>
+        <Route path = "/login" element = {<Login/>}/>
       </Routes>
     </div>
   );

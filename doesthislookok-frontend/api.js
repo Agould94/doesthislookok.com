@@ -7,3 +7,4 @@ const api = axios.create({
 export const getQuestions = () => api.get('/questions')
 export const getUsers = () => api.get('/users')
 export const getMarks = () => api.get('/marks')
+export default api.basURL

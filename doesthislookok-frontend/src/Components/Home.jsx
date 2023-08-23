@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Questions from '../features/User/Questions'
+import Logout from '../features/User/Logout'
 
 function Home() {
   return (
@@ -10,6 +11,7 @@ function Home() {
         <button>Check if it looks ok</button>
         </Link>
         <Questions></Questions>
+        <Logout></Logout>
     </div>
   
   )
