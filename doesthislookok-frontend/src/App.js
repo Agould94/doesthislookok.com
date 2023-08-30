@@ -22,9 +22,22 @@ import Login from './features/User/Login';
 //navbar
 import NavBar from './Components/NavBar';
 
+import axios from 'axios';
+import { getUser } from './api';
+import { setUser } from './features/User/userSlice';
+
 
 function App() {
   const dispatch = useDispatch()
+
+  useEffect(()=>{
+    getUser()
+    .then(response => {dispatch(setUser(response.data.user))}
+    )
+    .catch(error=>{
+      console.log(error)
+    })
+  },[])
 
   return (
     <div className="App">

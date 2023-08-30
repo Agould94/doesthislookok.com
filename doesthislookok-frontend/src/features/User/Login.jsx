@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux'
 
 import axios from 'axios';
 
-
+import { loginUser } from '../../api';
 
 function Login() {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ function Login() {
 
   const handleLogin = async()=>{
     try{
-      const response = await axios.post('http://localhost:8000/api/login/', formData)
+      const response = await loginUser(formData)
       const user = response.data.user;
       setLoggedIn(true)
       console.log(user)

@@ -1,12 +1,14 @@
 import React from "react";
 import axios from "axios";
 
+import { logoutUser } from "../../api";
+
 function Logout(){
 
     const handleLogout = async()=>{
         try{
-            await axios.get('http://localhost:8000/api/logout/');
-        } catch(errir){
+            await logoutUser();
+        } catch(error){
             console.log('error')
         }
     };
