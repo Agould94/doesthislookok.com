@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
-import humanBody from "../../media/HumanBody.png" 
+
+import HumanBody from './HumanBody';
 
 function Intake() {
   const [size, setSize] = useState('');
@@ -8,6 +9,8 @@ function Intake() {
   const [color, setColor] = useState('');
   const [texture, setTexture] = useState('');
   const [hasGrown, setHasGrown] = useState(false);
+
+
 
   const handleSubmit=(e)=>{
     e.preventDefault()
@@ -60,7 +63,9 @@ function Intake() {
           </label>
           <br />
           <button type="submit">Submit</button>
-          <img src={humanBody} className = "body-img"></img>
+          <br/>
+          <p>Where on your body is this mark?</p>
+          <HumanBody></HumanBody>
         </form>
       </div>
   )
