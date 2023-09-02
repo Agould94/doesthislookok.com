@@ -7,7 +7,7 @@ from rest_framework import permissions, status
 from .validations import custom_validation, validate_password, validate_email
 
 class UserRegister(APIView):
-    permission_classes = (permissions.AllowAny)
+    permission_classes = (permissions.AllowAny,)
     def post(self, request):
         clean_data = custom_validation(request.data)
         serializer = UserRegisterSerializer(data=clean_data)
@@ -18,17 +18,20 @@ class UserRegister(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class UserLogin(APIView):
-    permission_classes = (permissions.AllowAny)
-    authentication_classes = SessionAuthentication
+    permission_classes = (permissions.AllowAny,)
+    authentication_classes = (SessionAuthentication,)
     def post(self, request):
         data = request.data
         assert validate_email(data)
         assert validate_password(data)
         serializer = UserLoginSerializer(data=data)
+        #breakpoint()
         if serializer.is_valid(raise_exception=True):
             user = serializer.check_user(data)
+
             login(request, user)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            user_serializer = UserSerializer(user)
+            return Response(user_serializer.data, status=status.HTTP_200_OK)
 
 class UserLogout(APIView):
     def post(self, request):
@@ -36,8 +39,8 @@ class UserLogout(APIView):
         return Response(status=status.HTTP_200_OK)
 
 class UserView(APIView):
-    permission_classes = (permissions.IsAuthenticated)
-    authentication_classes = (SessionAuthentication)
+    permission_classes = (permissions.IsAuthenticated,)
+    authentication_classes = (SessionAuthentication,)
     def get(self, request):
         serializer = UserSerializer(request.user)
         return Response({'user':serializer.data}, status=status.HTTP_200_OK)

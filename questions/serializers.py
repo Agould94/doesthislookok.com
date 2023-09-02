@@ -5,3 +5,12 @@ class MarkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mark
         fields = '__all__'
+
+###
+ 
+# {
+#     "email":"george@george.com",
+#     "password":"george12345"
+# }
+
+###

@@ -19,9 +19,10 @@ function Signup(){
         setFormData((prevData=>({...prevData, [name]:value})))
     }
 
-    const handleSignup = async()=>{
+    const handleSignup = async(e)=>{
+        e.preventDefault()
         try{
-            const response = await axios.post('http://localhost:8000/api/register/', formData);
+            const response = await axios.post('http://localhost:8000/api/register', formData);
             const user = response.data.user;
             dispatchEvent(login(user))
         } catch(error){

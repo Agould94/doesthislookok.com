@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
+import humanBody from "../../media/HumanBody.png" 
 
 function Intake() {
   const [size, setSize] = useState('');
@@ -59,6 +60,7 @@ function Intake() {
           </label>
           <br />
           <button type="submit">Submit</button>
+          <img src={humanBody} className = "body-img"></img>
         </form>
       </div>
   )
