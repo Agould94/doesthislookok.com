@@ -113,7 +113,33 @@
   margin-right: 20px;
 }
 
+
+.body-img-div{
+  display: flex;
+  justify-content: center;
+  width:400px;
+  height:400px;
+  position:relative;
+}
 .body-img{
   width:400px;
   height:400px;
+  position:relative;
+  z-index: 1;
+}
+
+.point{
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  transform: translate(50%, 50%);
+  z-index: 2;
+  
+}
+
+.outerdiv{
+  position:absolute;
+  display: flex;
+  justify-content: center;
 }
