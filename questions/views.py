@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from questions.models import Question, Mark, User
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, permissions
 from .serializers import MarkSerializer
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import AllowAny
@@ -17,12 +17,13 @@ def index(request):
 
 
 
-class CreateMarkView(APIView):
-    authentication_classes = [SessionAuthentication]
-    permission_classes = [AllowAny]
-
-    def post(self, request, format=None):
+class MarkView(APIView):
+    permission_classes = (permissions.AllowAny,)
+    authentication_classes = (SessionAuthentication,)
+    def post(self, request):
+        breakpoint()
         serializer = MarkSerializer(data = request.data)
+        
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

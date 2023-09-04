@@ -117,8 +117,8 @@
 .body-img-div{
   display: flex;
   justify-content: center;
-  width:400px;
-  height:400px;
+  /* width:400px;
+  height:400px; */
   position:relative;
 }
 .body-img{
@@ -138,8 +138,14 @@
   
 }
 
-.outerdiv{
+/* .outerdiv{
   position:absolute;
   display: flex;
   justify-content: center;
+} */
+
+.logo{
+  height:inherit;
+  width:40px;
+  
 }

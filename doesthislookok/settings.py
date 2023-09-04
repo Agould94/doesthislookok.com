@@ -34,13 +34,13 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'questions.apps.QuestionsConfig',
     'users.apps.UsersConfig',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken'
     
@@ -147,7 +147,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS=True
+
+# CORS_ALLOW_ORIGINS = [
+#     'http://localhost:3000', 
+# ]
 
 CORS_ALLOW_CREDENTIALS=True
 
@@ -158,6 +162,10 @@ CORS_ALLOW_METHODS = [
     'PATCH',
     'DELETE',
     'OPTIONS',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000'
 ]
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'

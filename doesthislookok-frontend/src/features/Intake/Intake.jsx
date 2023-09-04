@@ -3,20 +3,23 @@ import axios from 'axios';
 
 import HumanBody from './HumanBody';
 
+import { submitMark } from '../../api';
+
 function Intake() {
   const [size, setSize] = useState('');
   const [description, setDescription] = useState('');
   const [color, setColor] = useState('');
   const [texture, setTexture] = useState('');
   const [hasGrown, setHasGrown] = useState(false);
+  const [point, setPoint] = useState(null)
 
 
 
   const handleSubmit=(e)=>{
     e.preventDefault()
 
-    const formData = {size, description, color, texture, has_grown: hasGrown}
-    axios.post("http://localhost:8000/marks", formData)
+    const formData = {size, description, color, texture, has_grown: hasGrown, point}
+    submitMark(formData)
     .then(response =>{
       console.log('Form submitteed successfully:', response.data)
       setSize('');
@@ -62,10 +65,10 @@ function Intake() {
             <input type="radio" name="hasGrown" value="false" checked={!hasGrown} onChange={() => setHasGrown(false)} /> No
           </label>
           <br />
-          <button type="submit">Submit</button>
-          <br/>
           <p>Where on your body is this mark?</p>
-          <HumanBody></HumanBody>
+          <HumanBody point = {point} setPoint = {setPoint}></HumanBody>
+          <br/>
+          <button type="submit">Submit</button>
         </form>
       </div>
   )
