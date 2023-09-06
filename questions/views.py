@@ -21,12 +21,15 @@ class MarkView(APIView):
     permission_classes = (permissions.AllowAny,)
     authentication_classes = (SessionAuthentication,)
     def post(self, request):
-        breakpoint()
-        serializer = MarkSerializer(data = request.data)
+        #breakpoint()
+        data = request.data
         
+        serializer = MarkSerializer(data = request.data, context = {'request':request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+        else:
+            print(serializer.errors)
+            return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
 
 # Create your views here.

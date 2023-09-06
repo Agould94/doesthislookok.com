@@ -17,8 +17,8 @@ function Intake() {
 
   const handleSubmit=(e)=>{
     e.preventDefault()
-
     const formData = {size, description, color, texture, has_grown: hasGrown, point}
+    console.log(formData)
     submitMark(formData)
     .then(response =>{
       console.log('Form submitteed successfully:', response.data)
