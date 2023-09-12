@@ -18,7 +18,7 @@ function NavBar(){
             {user ?
             <p className="user-info">{user.username}</p>
             :
-            <p>hello</p>
+            <Link className="user-info" to='/login'>Login</Link>
             }
         </nav>
     )
