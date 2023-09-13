@@ -5,15 +5,6 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
-
-# Create your models here.
-# class User(AbstractUser):
-#     name = models.CharField(max_length = 20)
-#     email = models.EmailField(unique=True)
-
-#     def __str__(self):
-#         return self.username
-
 class Question(models.Model):
     user = models.ForeignKey('users.AppUser', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
@@ -29,8 +20,8 @@ class Question(models.Model):
     
 
 class Image(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE,  related_name="question_images")
-    image = models.ImageField(upload_to='question_images/')
+    mark = models.ForeignKey('questions.Mark', on_delete=models.PROTECT,  related_name="mark_images")
+    image = models.ImageField(upload_to='mark_images/')
 
 class Mark(models.Model):
     user = models.ForeignKey('users.AppUser', on_delete=models.CASCADE)
@@ -41,4 +32,14 @@ class Mark(models.Model):
     has_grown = models.BooleanField()
     position_on_body_x = models.DecimalField(max_digits=10, decimal_places=2)
     position_on_body_y = models.DecimalField(max_digits=10, decimal_places=2)
-    
+    pub_date = models.DateTimeField(default = timezone.now)
+
+    def __str__(self):
+        return self.description
+    def was_published_recently(self):
+       return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+
+class Answer(models.Model):
+    should_see_doctor: models.BooleanField()
+    response: models.TextField()
+    level_of_concern: models.IntegerField()

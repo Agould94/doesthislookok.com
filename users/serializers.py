@@ -1,6 +1,7 @@
 
 from rest_framework import serializers
 from django.contrib.auth import get_user_model, authenticate
+from questions.serializers import MarkSerializer
 
 UserModel = get_user_model()
 
@@ -26,8 +27,9 @@ class UserLoginSerializer(serializers.Serializer):
         return user
 
 class UserSerializer(serializers.ModelSerializer):
+    mark_set = MarkSerializer(many=True)
     class Meta:
         model= UserModel
-        fields = ('user_id','email','username')
+        fields = ('user_id','email','username', 'mark_set')
 
     

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Questions from '../features/User/Questions'
+import Questions from '../features/Question/Questions'
+import UserQuestionList from '../features/Question/UserQuestionList'
 import Logout from '../features/User/Logout'
 import { useSelector } from 'react-redux'
 
@@ -12,9 +13,9 @@ function Home() {
        <Link to = "/intake">
         <button className='site-button'>Check if it looks ok</button>
         </Link>
-        <Questions></Questions>
+        <UserQuestionList></UserQuestionList>
         <Logout></Logout>
-        
+
 
     </div>
   
