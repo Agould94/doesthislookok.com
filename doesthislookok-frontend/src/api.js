@@ -8,7 +8,7 @@ axios.defaults.withCredentials = true;
 const api = axios.create({
     baseURL: 'http://localhost:8000',
     header:{
-        'Content-Type':'application/json',
+        'Content-Type':'multipart/form-data',
     }, 
     //withCredentials: true
 });

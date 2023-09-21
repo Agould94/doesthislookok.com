@@ -16,8 +16,12 @@ import Home from './Components/Home';
 //intake
 import Intake from './features/Intake/Intake';
 
+//login/signup
 import Signup from './features/User/Signup';
 import Login from './features/User/Login';
+
+//image upload page
+import ImageUpload from './features/Intake/ImageUpload';
 
 //navbar
 import NavBar from './Components/NavBar';
@@ -46,6 +50,8 @@ function App() {
       <NavBar></NavBar>
       <Routes>
         <Route exact path = "/" element = {<Home></Home>}>
+        </Route>
+        <Route path = "/imageupload" element = {<ImageUpload/>}>
         </Route>
         <Route path = "/intake" element = {<Intake/>}>
         </Route>

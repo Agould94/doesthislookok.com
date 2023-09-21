@@ -4,6 +4,9 @@ import axios from 'axios';
 import HumanBody from './HumanBody';
 
 import { submitMark } from '../../api';
+import ImageUpload from './ImageUpload';
+
+import { useLocation } from 'react-router-dom';
 
 function Intake() {
   const [size, setSize] = useState('');
@@ -12,13 +15,24 @@ function Intake() {
   const [texture, setTexture] = useState('');
   const [hasGrown, setHasGrown] = useState(false);
   const [point, setPoint] = useState(null)
+  
+  const location = useLocation()
+  const image = location.state
+  console.log(image.image.name)
 
 
 
   const handleSubmit=(e)=>{
     e.preventDefault()
-    const formData = {size, description, color, texture, has_grown: hasGrown, point}
+    const formData = new FormData()
+    formData.append('size', size)
+    formData.append('description', description)
+    formData.append('color', color)
+    formData.append('has_grown', hasGrown)
+    formData.append('point', point)
+    formData.append('image', image)
     console.log(formData)
+
     submitMark(formData)
     .then(response =>{
       console.log('Form submitteed successfully:', response.data)

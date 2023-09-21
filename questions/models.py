@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 
 class Question(models.Model):
     user = models.ForeignKey('users.AppUser', on_delete=models.CASCADE)
+    #mark = models.ForeignKey('questions.mark', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField()
     pub_date = models.DateTimeField("date published")
@@ -25,6 +26,7 @@ class Image(models.Model):
 
 class Mark(models.Model):
     user = models.ForeignKey('users.AppUser', on_delete=models.CASCADE)
+    question = models.ManyToManyField(Question)
     size_in_mm = models.DecimalField(max_digits=5, decimal_places=2)
     description = models.TextField()
     color = models.TextField()

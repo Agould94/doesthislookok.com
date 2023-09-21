@@ -138,6 +138,31 @@
   
 }
 
+.custom-file-upload{
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #909090;
+  padding: 8px 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.custom-file-upload input[type="file"]{
+  font-size:100px;
+  position:absolute;
+  left:0;
+  top:0;
+  opacity: 0;
+}
+
+.custom-file-upload div{
+  font-size: 14px;
+  margin-top: 8px;
+}
 /* .outerdiv{
   position:absolute;
   display: flex;

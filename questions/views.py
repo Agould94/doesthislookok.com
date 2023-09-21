@@ -21,7 +21,7 @@ class MarkView(APIView):
     permission_classes = (permissions.AllowAny,)
     authentication_classes = (SessionAuthentication,)
     def post(self, request):
-        #breakpoint()
+        breakpoint()
         data = request.data
         
         serializer = MarkSerializer(data = request.data, context = {'request':request})
@@ -31,5 +31,11 @@ class MarkView(APIView):
         else:
             print(serializer.errors)
             return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+
+class ImageView(APIView):
+    permission_classes = (permissions.AllowAny,)
+    authentication_classes=(SessionAuthentication,)
+
+    
 
 # Create your views here.
